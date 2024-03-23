@@ -1,5 +1,7 @@
 import React from 'react';
+// import Logo from './logo';
 import { BiSolidMoon, BiSolidSun } from "react-icons/bi";
+
 
 const NavLink = [
     {
@@ -23,28 +25,31 @@ const NavLink = [
         link: "/#Booking",
     },
 ]
+
 const Navbar = ({theme, setTheme}) => {
   return (
-    <nav className="shadow-md">
-        <div className="container">
+    <nav className="shadow-md bg-white
+    dark:bg-dark dark:text-white duration-300">
+        <div className="container md:py-0">
             <div className="flex
-            justify-between items-center">
+            justify-between items-center inset: 0px">
                 <div>
+                    {/* <Logo />  */}
                     <h1 className="text-xl
                     font-bold">Atlas Premium Auto Shield</h1>
-                </div>
+               </div>
                 <div className="hidden md:block">
                     <ul className="flex 
                     items-center gap-8">
-                        { NavLink.map((data) =>(
-                        <li key={data.id}>
+                        {NavLink.map((data) =>(
+                        <li key={data.id} className="py-4">
                             <a
-                             className="inline-block
-                            py-2 hover:border-b-2
+                             className="py-2
+                            hover:border-b-2
                             hover:text-primary
                             hover:border-primary
                             transition-colors
-                            duration-500 text-lg
+                            duration-300 text-lg
                             font-medium"
                              href={data.link}>
                                 {data.name}
@@ -55,20 +60,21 @@ const Navbar = ({theme, setTheme}) => {
                 </div>
                 <div>
                     {
-                        theme=="dark"?(<BiSolidSun
+                        theme=="dark"? (<BiSolidSun
                         onClick={() => setTheme
                         ("light")}
-                            className="text-2xl" />
+                            className="text-2xl"/>
                             ):(
                                 <BiSolidMoon
                                 onClick={() => setTheme
                                     ("dark")}
-                            className="text-2xl" />
+                            className="text-2xl"/>
                             )
                     }
                 
             </div>
             </div>
+            
         </div>
     </nav>
     );
