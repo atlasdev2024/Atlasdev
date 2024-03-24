@@ -1,5 +1,6 @@
 import React from 'react';
 import CarPng from '../../assets/Atlast Assets/Hero Images/AboutCar-2-400px.png';
+
 const About = () => {
   return (
     <div className="dark:bg-dark
