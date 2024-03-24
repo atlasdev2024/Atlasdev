@@ -1,294 +1,106 @@
-// import React from 'react';
-// import Services from '../Services/';
-// // import Logo from './logo';
-// import { BiSolidMoon, BiSolidSun } from "react-icons/bi";
+import React, { useState } from "react";
+import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
+import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
+import ResponsiveMenu from "./ResponsiveMenu";
 
-
-// const NavLink = [
-//     {
-//         id:"1",
-//         name: "Home",
-//         link: "/#"
-//     },
-//     {
-//         id:"2",
-//         name: "Services",
-//         link: "/Services",
-//     },
-//     {
-//         id:"3",
-//         name: "About",
-//         link: "/#About",
-//     },
-//     {
-//         id:"4",
-//         name: "Booking",
-//         link: "/#Booking",
-//     },
-// ]
-
-// const Navbar = ({theme, setTheme}) => {
-//   return (
-//     <nav className="shadow-md bg-white
-//     dark:bg-dark dark:text-white duration-300">
-//         <div className="container md:py-0">
-//             <div className="flex
-//             justify-between items-center inset: 0px">
-//                 <div>
-//                     {/* <Logo />  */}
-//                     <h1 className="text-xl
-//                     font-bold
-//                     ">Atlas Premium Auto Shield</h1>
-//                </div>
-//                 <div className="hidden md:block">
-//                     <ul className="flex 
-//                     items-center gap-8">
-//                         {NavLink.map((data) =>(
-//                         <li key={data.id} className="py-4">
-//                             <a
-//                              className="py-2
-//                             hover:border-b-2
-//                             hover:text-primary
-//                             hover:border-primary
-//                             transition-colors
-//                             duration-300 text-lg
-//                             font-medium"
-//                              href={data.link}>
-//                                 {data.name}
-//                                 </a>
-//                         </li>
-//                         ))}
-//                     </ul>
-//                 </div>
-//                 <div>
-//                     {
-//                         theme=="dark"? (<BiSolidSun
-//                         onClick={() => setTheme
-//                         ("light")}
-//                             className="text-2xl"/>
-//                             ):(
-//                                 <BiSolidMoon
-//                                 onClick={() => setTheme
-//                                     ("dark")}
-//                             className="text-2xl"/>
-//                             )
-//                     }
-                
-//             </div>
-//             </div>
-            
-//         </div>
-//     </nav>
-//     );
-  
-// }
-
-// export default Navbar;
-
-// import React, { useState } from 'react';
-// // import Logo from './logo';
-// import { BiSolidMoon, BiSolidSun } from "react-icons/bi";
-// import { FaPesoSign } from "react-icons/fa6";
-// import { FaGem } from "react-icons/fa";
-// import { GrCertificate } from "react-icons/gr";
-
-// const NavLink = [
-//     {
-//         id:"1",
-//         name: "Home",
-//         link: "/#"
-//     },
-//     {
-//         id:"2",
-//         name: "Services",
-//         link: "/Services",
-//         dropdown: true,
-//         dropdownItems: [ 
-//             {
-//                 name: "Best Price",
-//                 icon: <FaPesoSign />,
-//                 link: "#",
-//                 description: "Select Atlas Premium Auto Shield for unbeatable prices in auto detailing, where affordability meets exceptional quality, ensuring you get the best value for your investment in maintaining your vehicle's pristine condition."
-//             },
-//             {
-//                 name: "Premium Products",
-//                 icon: <FaGem />,
-//                 link: "#",
-//                 description: "We believe in using only the best products and techniques to treat your vehicle. From top-of-the-line cleaning solutions to advanced polishing methods, we employ cutting-edge technology to deliver results that exceed expectations."
-//             },
-//             {
-//                 name: "Unmatched Expertise",
-//                 icon: <GrCertificate />,
-//                 link: "#",
-//                 description: "We believe in using only the best products and techniques to treat your vehicle. From top-of-the-line cleaning solutions to advanced polishing methods, we employ cutting-edge technology to deliver results that exceed expectations."
-//             }
-//         ]
-//     },
-//     {
-//         id:"3",
-//         name: "About",
-//         link: "/#About",
-//     },
-//     {
-//         id:"4",
-//         name: "Booking",
-//         link: "/#Booking",
-//     },
-// ]
-
-// const Navbar = ({theme, setTheme}) => {
-//   const [showDropdown, setShowDropdown] = useState(false);
-
-//   const handleToggleDropdown = () => {
-//     setShowDropdown(!showDropdown);
-//   };
-
-//   return (
-//     <nav className="shadow-md bg-white dark:bg-dark dark:text-white duration-300">
-//         <div className="container md:py-0">
-//             <div className="flex justify-between items-center inset: 0px">
-//                 <div>
-//                     {/* <Logo />  */}
-//                     <h1 className="text-xl font-bold">Atlas Premium Auto Shield</h1>
-//                </div>
-//                 <div className="hidden md:block">
-//                     <ul className="flex items-center gap-8">
-//                         {NavLink.map((data) =>(
-//                             <li key={data.id} className="py-4">
-//                                 {data.dropdown ? (
-//                                     <div className="relative">
-//                                         <a
-//                                             className="py-2 hover:border-b-2 hover:text-primary hover:border-primary transition-colors duration-300 text-lg font-medium"
-//                                             onClick={handleToggleDropdown}
-//                                             href={data.link}>
-//                                             {data.name}
-//                                         </a>
-//                                         {showDropdown && (
-//                                             <ul className="absolute left-0 w-48 py-2 bg-white dark:bg-dark dark:text-white shadow-md rounded-md z-10">
-//                                                 {data.dropdownItems.map((item, index) => (
-//                                                     <li key={index} className="px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-800">
-//                                                         <a href={item.link} className="flex items-center gap-2">
-//                                                             {item.icon}
-//                                                             <span>{item.name}</span>
-//                                                         </a>
-//                                                         <p className="text-sm">{item.description}</p>
-//                                                     </li>
-//                                                 ))}
-//                                             </ul>
-//                                         )}
-//                                     </div>
-//                                 ) : (
-//                                     <a
-//                                         className="py-2 hover:border-b-2 hover:text-primary hover:border-primary transition-colors duration-300 text-lg font-medium"
-//                                         href={data.link}>
-//                                         {data.name}
-//                                     </a>
-//                                 )}
-//                             </li>
-//                         ))}
-//                     </ul>
-//                 </div>
-//                 <div>
-//                     {
-//                         theme === "dark" ? (
-//                             <BiSolidSun onClick={() => setTheme("light")} className="text-2xl"/>
-//                         ) : (
-//                             <BiSolidMoon onClick={() => setTheme("dark")} className="text-2xl"/>
-//                         )
-//                     }
-//                 </div>
-//             </div>
-//         </div>
-//     </nav>
-//   );
-// }
-
-// export default Navbar;
-
-import React, { useState } from 'react';
-import Services from '../Services/Services';
-import { BiSolidMoon, BiSolidSun } from "react-icons/bi";
-
-const NavLink = [
-    {
-        id: "1",
-        name: "Home",
-        link: "/#"
-    },
-    {
-        id: "2",
-        name: "Services",
-        link: "/Services",
-        dropdown: true, // Indicates it has dropdown items
-    },
-    {
-        id: "3",
-        name: "About",
-        link: "/#About",
-    },
-    {
-        id: "4",
-        name: "Booking",
-        link: "/#Booking",
-    },
-]
-
+export const Navlinks = [
+  {
+    id: 1,
+    name: "HOME",
+    link: "/#",
+  },
+  {
+    id: 2,
+    name: "CARS",
+    link: "/#cars",
+  },
+  {
+    id: 1,
+    name: "ABOUT",
+    link: "/#about",
+  },
+  {
+    id: 1,
+    name: "BOOKING",
+    link: "/#booking",
+  },
+];
 const Navbar = ({ theme, setTheme }) => {
-    const [showDropdown, setShowDropdown] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
-    const handleToggleDropdown = () => {
-        setShowDropdown(!showDropdown);
-    };
-
-    return (
-        <nav className="shadow-md bg-white dark:bg-dark dark:text-white duration-300">
-            <div className="container md:py-0">
-                <div className="flex justify-between items-center inset: 0px">
-                    <div>
-                        <h1 className="text-xl font-bold">Atlas Premium Auto Shield</h1>
-                    </div>
-                    <div className="hidden md:block">
-                        <ul className="flex items-center gap-8">
-                            {NavLink.map((data) => (
-                                <li key={data.id} className="py-4">
-                                    {data.dropdown ? (
-                                        <div className="relative">
-                                            <a
-                                                className="py-2 hover:border-b-2 hover:text-primary hover:border-primary transition-colors duration-300 text-lg font-medium"
-                                                onClick={handleToggleDropdown}
-                                                href={data.link}>
-                                                {data.name}
-                                            </a>
-                                            {showDropdown && (
-                                                <div className="absolute left-0 mt-2 bg-white dark:bg-dark dark:text-white shadow-md rounded-md z-10">
-                                                    <Services /> {/* Here we render the Services component */}
-                                                </div>
-                                            )}
-                                        </div>
-                                    ) : (
-                                        <a
-                                            className="py-2 hover:border-b-2 hover:text-primary hover:border-primary transition-colors duration-300 text-lg font-medium"
-                                            href={data.link}>
-                                            {data.name}
-                                        </a>
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div>
-                        {
-                            theme === "dark" ? (
-                                <BiSolidSun onClick={() => setTheme("light")} className="text-2xl" />
-                            ) : (
-                                <BiSolidMoon onClick={() => setTheme("dark")} className="text-2xl" />
-                            )
-                        }
-                    </div>
-                </div>
-            </div>
-        </nav>
-    );
-}
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+  return (
+    <div
+      className="relative z-10 shadow-md w-full dark:bg-black dark:text-white duration-300
+    "
+    >
+      <div className="container py-2 md:py-0">
+        <div className="flex justify-between items-center">
+          <div>
+            <span className="text-3xl font-bold font-serif">Car Rental</span>
+          </div>
+          <nav className="hidden md:block">
+            <ul className="flex items-center gap-8">
+              {Navlinks.map(({ id, name, link }) => (
+                <li key={id} className="py-4">
+                  <a
+                    href={link}
+                    className=" text-lg font-medium  hover:text-primary py-2 hover:border-b-2 hover:border-primary transition-colors duration-500  "
+                  >
+                    {name}
+                  </a>
+                </li>
+              ))}
+              {/* DarkMode feature implement */}
+              {theme === "dark" ? (
+                <BiSolidSun
+                  onClick={() => setTheme("light")}
+                  className="text-2xl"
+                />
+              ) : (
+                <BiSolidMoon
+                  onClick={() => setTheme("dark")}
+                  className="text-2xl"
+                />
+              )}
+            </ul>
+          </nav>
+          {/* Mobile view  */}
+          <div className="flex items-center gap-4 md:hidden ">
+            {/* dark  mode */}
+            {theme === "dark" ? (
+              <BiSolidSun
+                onClick={() => setTheme("light")}
+                className="text-2xl"
+              />
+            ) : (
+              <BiSolidMoon
+                onClick={() => setTheme("dark")}
+                className="text-2xl"
+              />
+            )}
+            {/* Mobile Hamburger icon */}
+            {showMenu ? (
+              <HiMenuAlt1
+                onClick={toggleMenu}
+                className=" cursor-pointer transition-all"
+                size={30}
+              />
+            ) : (
+              <HiMenuAlt3
+                onClick={toggleMenu}
+                className="cursor-pointer transition-all"
+                size={30}
+              />
+            )}
+          </div>
+        </div>
+      </div>
+      <ResponsiveMenu showMenu={showMenu} />
+    </div>
+  );
+};
 
 export default Navbar;
