@@ -33,7 +33,7 @@ const ResponsiveMenu = ({ showMenu }) => {
       </div>
       <div className="footer">
         <h1>
-          Made with ❤ by <a href="https://dilshad-ahmed.github.io/">Dilshad</a>{" "}
+          {/* Made with ❤ by <a href="https://dilshad-ahmed.github.io/">Dilshad</a>{" "} */}
         </h1>
       </div>
     </div>
