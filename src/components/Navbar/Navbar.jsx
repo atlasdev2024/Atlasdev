@@ -36,7 +36,8 @@ const Navbar = ({theme, setTheme}) => {
                 <div>
                     {/* <Logo />  */}
                     <h1 className="text-xl
-                    font-bold">Atlas Premium Auto Shield</h1>
+                    font-bold
+                    ">Atlas Premium Auto Shield</h1>
                </div>
                 <div className="hidden md:block">
                     <ul className="flex 

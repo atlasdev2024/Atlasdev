@@ -1,10 +1,11 @@
 import React from 'react';
-import CarPng from '../../assets/Atlast Assets/Hero Images/AboutCar-2.png';
+import CarPng from '../../assets/Atlast Assets/Hero Images/AboutCar-2-400px.png';
 const About = () => {
   return (
     <div className="dark:bg-dark
     dark:text-white duration-300 sm:min-h-
-    [600px] sm:grid place-items-center">
+    [600px] sm:grid place-items-center
+    ">
     <div className="container">
         <div className="grid grid-cols-1
         sm:grid-cols-2 place-items-center">
@@ -24,7 +25,7 @@ const About = () => {
                 sm:text-4xl font-bold
                 font-serif">About Us</h1>
                 <p data-aos="fade-up">
-                Atlas Premium Auto Shield is more than just a name, it's a symbol of unparalleled
+                "Atlas Premium Auto Shield is more than just a name, it's a symbol of unparalleled
                  quality and service in the world of auto detailing. 
                  With a meticulous approach and a passion for perfection, our team takes pride in 
                  restoring your vehicle's showroom shine, ensuring that it remains a source of pride 
@@ -33,7 +34,7 @@ const About = () => {
                 <p data-aos="fade-up">
                 Our team of professionals is dedicated to elevating your driving experience by restoring 
                 your vehicle's luster and protecting it for the long haul, ensuring that every journey is 
-                met with unparalleled beauty and sophistication.
+                met with unparalleled beauty and sophistication.""
                 </p>
                 <button 
                 data-aos="fade-up"
