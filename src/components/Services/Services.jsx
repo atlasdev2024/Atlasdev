@@ -2,6 +2,7 @@ import React from "react";
 import { FaPesoSign } from "react-icons/fa6";
 import { FaGem } from "react-icons/fa";
 import { GrCertificate } from "react-icons/gr";
+import VerticalForm from "../Form/BookNow"; // Import VerticalForm component
 
 // Import your images
 import PointProtectionFilmImage from "../../assets/Atlast Assets/Hero Images/PPF2.jpg";
@@ -94,6 +95,8 @@ const Services = () => {
               Book Now
             </button>
           </div>
+          {/* Add the VerticalForm component here */}
+          <VerticalForm services={skillsData} />
         </div>
       </div>
     </>

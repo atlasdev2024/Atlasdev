@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar/Navbar';
-import BookingTab from './components/Booking/Booking';
+// import BookingForm from './components/Booking/BookingForm'; // Import the BookingForm component
 import Hero from './components/Hero/Hero';
 import About from './components/About Us/About';
 import Services from './components/Services/Services';
@@ -37,13 +37,11 @@ const App = () => {
   return (
     <div className={`theme-${theme}`}>
       <Navbar theme={theme} setTheme={setTheme} />
-      {/* <BookingTab /> */}
       <Hero theme={theme} />
       <About />
       <WhyChooseUs />
       <Services />
-      
-      
+      {/* <BookingForm /> Include the BookingForm component here */}
     </div>
   );
 };
