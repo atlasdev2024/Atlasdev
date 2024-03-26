@@ -3,7 +3,7 @@ import carPng from '../../assets/Atlast Assets/Hero Images/AtlasHero3-shadow.png
 import grayCarPng from '../../assets/Atlast Assets/Hero Images/AtlasHerolight1-640x488.png';
 import VerticalForm from '../Form/BookNow';
 
-const Hero = ({ theme }) => {
+const Hero = ({ theme, onBookNowClick }) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const formRef = useRef(null);
 
@@ -22,10 +22,14 @@ const Hero = ({ theme }) => {
 
   const handleOpenForm = () => {
     setIsFormVisible(true);
+    // Call the onBookNowClick function passed from the App component
+    if (typeof onBookNowClick === 'function') {
+      onBookNowClick();
+    }
   };
 
   return (
-    <div className="dark:bg-black dark:text-white duration-300 relative-z-20">
+    <div className={`hero-container ${theme === 'dark' ? 'dark' : ''}`}>
       <div className="container min-h-[620px] flex">
         <div className="grid place-items-center grid-cols-2 sm-grid-cols-2">
           <div data-aos="zoom-in" data-aos-duration="1500" className="order-1 sm:order-2">

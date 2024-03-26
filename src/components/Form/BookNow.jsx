@@ -1,82 +1,150 @@
 import React, { useState } from 'react';
+import { TextField, Button } from '@mui/material';
+import MenuItem from '@mui/material/MenuItem';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { IntlProvider } from 'react-intl';
 
-const VerticalForm = ({ onClose, theme, services }) => {
+const VerticalForm = ({ showForm, onClose, services }) => {
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     contactNumber: '',
-    carModel: '',
-    selectedPackage: '', // New state for the selected package
+    selectedPackage: '',
   });
+
+  const [startDate, setStartDate] = useState(new Date());
+  const [showCalendar, setShowCalendar] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add form submission logic here, e.g., log form data
-    console.log(formData);
-    // Reset form fields
-    setFormData({ name: '', contactNumber: '', carModel: '', selectedPackage: '' });
+
+    const postData = {
+      ...formData,
+      selectedDate: startDate,
+    };
+
+    try {
+      const response = await fetch('/api/appointment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit appointment');
+      }
+
+      setFormData({ name: '', email: '', contactNumber: '', selectedPackage: '' });
+      setStartDate(new Date());
+      setShowCalendar(false);
+      onClose(); // Close the form after successful submission
+
+      console.log('Appointment submitted successfully');
+    } catch (error) {
+      console.error('Error submitting appointment:', error.message);
+    }
   };
 
-  // Define styles based on the theme
-  const formStyles = {
-    backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff',
-    color: theme === 'dark' ? '#ffffff' : '#000000',
-    border: `2px solid ${theme === 'dark' ? '#ffffff' : '#000000'}`,
-    borderRadius: '8px',
-    padding: '20px',
-    width: '300px',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-  };
-
-  // Define input styles
-  const inputStyles = {
-    width: '100%',
-    padding: '8px',
-    marginBottom: '10px',
-    borderRadius: '4px',
-    border: `1px solid ${theme === 'dark' ? '#ffffff' : '#000000'}`, // Set border color based on theme
-    backgroundColor: theme === 'dark' ? '#364152' : '#f3f4f6', // Set background color based on theme
-    color: theme === 'dark' ? '#ffffff' : '#000000', // Set text color based on theme
-  };
-
-  // Define button styles
-  const buttonStyles = {
-    margin: '0 20px', // Add margin between buttons
+  const handleClose = () => {
+    setShowCalendar(false); // Close the calendar if open
+    onClose(); // Close the form
   };
 
   return (
-    <form onSubmit={handleSubmit} style={formStyles}>
-      <div className="mb-3">
-        <label htmlFor="name" className="form-label">Name</label>
-        <input type="text" className="form-control" id="name" name="name" value={formData.name} onChange={handleChange} required style={inputStyles} />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="contactNumber" className="form-label">Contact Number</label>
-        <input type="tel" className="form-control" id="contactNumber" name="contactNumber" value={formData.contactNumber} onChange={handleChange} required style={inputStyles} />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="carModel" className="form-label">Car Model</label>
-        <input type="text" className="form-control" id="carModel" name="carModel" value={formData.carModel} onChange={handleChange} required style={inputStyles} />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="selectedPackage" className="form-label">Choose your package</label>
-        <select id="selectedPackage" name="selectedPackage" value={formData.selectedPackage} onChange={handleChange} className="form-select" style={inputStyles}>
-          <option value="">Select a package</option>
-          {services.map((Services, index) => (
-            <option key={index} value={Services.name}>{Services.name}</option>
-          ))}
-        </select>
-      </div>
-      <button type="submit" className="btn bg-primary text-black px-6 py-2 rounded-md hover:bg-primary/80 duration-300 font-bold" style={buttonStyles}>Submit</button>
-      <button type="button" onClick={onClose} className="btn bg-slate-800 text-black px-6 py-2 rounded-md hover:bg-primary/80 duration-300 font-bold">Close</button>
-    </form>
+    <IntlProvider locale="en">
+      {showForm && (
+        <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', maxWidth: '400px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', backgroundColor: '#fff' }}>
+          <form onSubmit={handleSubmit}>
+            <TextField
+              label="Name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              autoComplete="name"
+            />
+            <TextField
+              label="Email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              autoComplete="email"
+            />
+            <TextField
+              label="Contact Number"
+              name="contactNumber"
+              type="tel"
+              value={formData.contactNumber}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              autoComplete="tel"
+            />
+            {services && services.length > 0 && (
+              <TextField
+                select
+                label="Choose your package"
+                name="selectedPackage"
+                value={formData.selectedPackage}
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                autoComplete="off"
+              >
+                {services.map((service) => (
+                  <MenuItem key={service.id} value={service.name}>
+                    {service.name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            )}
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => setShowCalendar(true)}
+              style={{ marginBottom: '10px', width: '100%' }}
+            >
+              Open Calendar
+            </Button>
+            {showCalendar && (
+              <DatePicker
+                value={startDate}
+                onChange={(date) => setStartDate(date)}
+                renderInput={(props) => <TextField {...props} fullWidth />}
+              />
+            )}
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              style={{ marginBottom: '10px', width: '100%' }}
+            >
+              Submit
+            </Button>
+            <Button
+              type="button"
+              onClick={handleClose} // Call handleClose to close the form
+              variant="contained"
+              color="secondary"
+              style={{ width: '100%' }}
+            >
+              Close
+            </Button>
+          </form>
+        </div>
+      )}
+    </IntlProvider>
   );
 };
 

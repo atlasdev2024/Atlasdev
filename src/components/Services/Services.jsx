@@ -1,10 +1,5 @@
 import React from "react";
-import { FaPesoSign } from "react-icons/fa6";
-import { FaGem } from "react-icons/fa";
-import { GrCertificate } from "react-icons/gr";
-import VerticalForm from "../Form/BookNow"; // Import VerticalForm component
-
-// Import your images
+import VerticalForm from "../Form/BookNow";
 import PointProtectionFilmImage from "../../assets/Atlast Assets/Hero Images/PPF2.jpg";
 import GrapheneCeramicCoatingImage from "../../assets/Atlast Assets/Hero Images/PPF2.jpg";
 import PaintCorrectionEnhancementImage from "../../assets/Atlast Assets/Hero Images/PPF.jpg";
@@ -12,38 +7,33 @@ import InteriorDetailImage from "../../assets/Atlast Assets/Hero Images/PPF.jpg"
 
 const skillsData = [
   {
+    id: 1,
     name: "Point Protection Film",
-    image: PointProtectionFilmImage, // Image for Point Protection Film
+    image: PointProtectionFilmImage,
     link: "#",
     description: "",
     aosDelay: "300",
   },
   {
+    id: 2,
     name: "Graphene Ceramic Coating",
-    // icon: (
-    //   <FaGem className="text-5xl text-primary group-hover:text-black duration-300" />
-    // ),
-    image: GrapheneCeramicCoatingImage, // Image for Graphene Ceramic Coating
+    image: GrapheneCeramicCoatingImage,
     link: "#",
     description: "",
     aosDelay: "500",
   },
   {
+    id: 3,
     name: "Paint Correction/Enhancement",
-    // icon: (
-    //   <GrCertificate className="text-5xl text-primary group-hover:text-black duration-500" />
-    // ),
-    image: PaintCorrectionEnhancementImage, // Image for Paint Correction/Enhancement
+    image: PaintCorrectionEnhancementImage,
     link: "#",
     description: "",
     aosDelay: "1000",
   },
   {
+    id: 4,
     name: "Interior Detail",
-    // icon: (
-    //   <GrCertificate className="text-5xl text-primary group-hover:text-black duration-500" />
-    // ),
-    image: InteriorDetailImage, // Image for Interior Detail
+    image: InteriorDetailImage,
     link: "#",
     description: "",
     aosDelay: "1500",
@@ -67,13 +57,12 @@ const Services = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {skillsData.map((skill) => (
               <div
-                key={skill.name}
+                key={skill.id}
                 data-aos="fade-up"
                 data-aos-delay={skill.aosDelay}
                 className="card text-center group space-y-3 sm:space-y-6 p-4 sm:py-16 bg-dark  hover:bg-primary duration-300 text-white hover:text-primary rounded-lg"
                 style={{ backgroundImage: `url(${skill.image})`, backgroundSize: "cover"  }}
               >
-                <div className="grid place-items-center">{skill.icon}</div>
                 <p>{skill.description}</p>
                 <a
                   href={skill.link}
@@ -95,8 +84,7 @@ const Services = () => {
               Book Now
             </button>
           </div>
-          {/* Add the VerticalForm component here */}
-          <VerticalForm services={skillsData} />
+          <VerticalForm showForm={true} onClose={() => {}} services={skillsData} />
         </div>
       </div>
     </>
