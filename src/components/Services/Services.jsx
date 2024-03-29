@@ -9,40 +9,50 @@ import PaintCorrectionEnhancementImage from "../../assets/Atlast Assets/Hero Ima
 import InteriorDetailImage from "../../assets/Atlast Assets/Hero Images/PPF.jpg";
 import "./custom-slider.css"; // Import the custom CSS file
 
+const skillsData = [
+  {
+    id: 1,
+    name: "Paint Protection Film",
+    image: PointProtectionFilmImage,
+    link: "#",
+    description: "",
+    aosDelay: "300",
+    interval: 2000,
+  },
+  {
+    id: 2,
+    name: "Graphene Ceramic Coating",
+    image: GrapheneCeramicCoatingImage,
+    link: "#",
+    description: "",
+    aosDelay: "500",
+    interval: 3000,
+  },
+  {
+    id: 3,
+    name: "Paint Correction/Enhancement",
+    image: PaintCorrectionEnhancementImage,
+    link: "#",
+    description: "",
+    aosDelay: "1000",
+    interval: 4000,
+  },
+  {
+    id: 4,
+    name: "Interior Detail",
+    image: InteriorDetailImage,
+    link: "#",
+    description: "",
+    aosDelay: "1500",
+    interval: 5000,
+  },
+];
+
 const Services = () => {
   const [showForm, setShowForm] = useState(false);
 
   const handleBookNowClick = () => {
     setShowForm(true);
-  };
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: true, // Enable autoplay
-    autoplaySpeed: 3000, // Set the interval between slides (in milliseconds)
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-    ],
   };
 
   return (
@@ -58,13 +68,38 @@ const Services = () => {
               Services Offered
             </h1>
           </div>
-          <Slider {...settings}>
+          <Slider
+            dots
+            infinite
+            speed={500}
+            slidesToShow={2}
+            slidesToScroll={1}
+            responsive={[
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1,
+                  infinite: true,
+                  dots: true,
+                },
+              },
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  initialSlide: 1,
+                },
+              },
+            ]}
+          >
             {skillsData.map((skill) => (
               <div
                 key={skill.id}
                 data-aos="fade-up"
                 data-aos-delay={skill.aosDelay}
-                className="p-4 rounded-lg"
+                className="p-4  rounded-lg"
                 style={{ overflow: "hidden" }}
               >
                 <div

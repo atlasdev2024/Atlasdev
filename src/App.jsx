@@ -7,7 +7,6 @@ import WhyChooseUs from './components/WhyChooseUs/WhyChooseUs';
 import VerticalForm from './components/Form/EmailJs';
 
 const App = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [showForm, setShowForm] = useState(false);
 
   const handleBookNowClick = () => {
@@ -19,10 +18,10 @@ const App = () => {
   };
 
   return (
-    <div className={`theme-${theme}`}>
-      <Navbar theme={theme} setTheme={setTheme} />
-      {/* Pass the theme prop to the Hero component and the onBookNowClick prop */}
-      <Hero theme={theme} onBookNowClick={handleBookNowClick} />
+    <div>
+      <Navbar />
+      {/* Pass the onBookNowClick prop to the Hero component */}
+      <Hero onBookNowClick={handleBookNowClick} />
       <About />
       <WhyChooseUs />
       <Services />
