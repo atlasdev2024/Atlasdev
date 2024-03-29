@@ -18,7 +18,7 @@ const VerticalForm = ({ onClose, theme, services }) => {
     e.preventDefault();
 
     // Send email using EmailJS
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
+    emailjs.sendForm('service_ztlqjoe', 'template_cupm3iu', e.target, 'YOUR_USER_ID')
       .then((result) => {
         console.log('Email sent successfully:', result.text);
         // Optionally, you can show a success message or perform other actions here

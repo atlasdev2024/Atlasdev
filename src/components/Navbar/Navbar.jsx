@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { BiSolidMoon, BiSolidSun, BiMenu, BiX } from "react-icons/bi";
 
 const NavLink = [
     {
@@ -24,7 +23,7 @@ const NavLink = [
     },
 ]
 
-const Navbar = ({ theme, setTheme }) => {
+const Navbar = () => {
     const [showMenu, setShowMenu] = useState(false);
 
     const handleToggleMenu = () => {
@@ -32,21 +31,17 @@ const Navbar = ({ theme, setTheme }) => {
     };
 
     return (
-        <nav className="shadow-md bg-white dark:bg-dark dark:text-white duration-300">
-            <div className="container md:py-0">
-                <div className="flex justify-between items-center inset: 0px">
+        <nav className="shadow-md bg-white duration-300">
+            <div className="container mx-auto px-4 md:px-0 py-4">
+                <div className="flex justify-between items-center">
                     <div>
                         <h1 className="text-xl font-bold">Atlas Premium Auto Shield</h1>
                     </div>
                     <div className="md:hidden">
-                        {showMenu ? (
-                            <BiX onClick={handleToggleMenu} className="text-2xl cursor-pointer" />
-                        ) : (
-                            <BiMenu onClick={handleToggleMenu} className="text-2xl cursor-pointer" />
-                        )}
+                        <button onClick={handleToggleMenu} className="text-2xl cursor-pointer">&#9776;</button>
                     </div>
-                    <div className={`md:flex ${showMenu ? 'block' : 'hidden'}`}>
-                        <ul className="flex items-center gap-8">
+                    <div className={`md:flex ${showMenu ? 'block' : 'hidden'} md:items-center`}>
+                        <ul className="md:flex items-center gap-8">
                             {NavLink.map((data) => (
                                 <li key={data.id} className="py-4">
                                     <a
@@ -57,15 +52,6 @@ const Navbar = ({ theme, setTheme }) => {
                                 </li>
                             ))}
                         </ul>
-                    </div>
-                    <div>
-                        {
-                            theme === "dark" ? (
-                                <BiSolidSun onClick={() => setTheme("light")} className="text-2xl" />
-                            ) : (
-                                <BiSolidMoon onClick={() => setTheme("dark")} className="text-2xl" />
-                            )
-                        }
                     </div>
                 </div>
             </div>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import carPng from '../../assets/Atlast Assets/Hero Images/AtlasHero3-shadow.png';
+// import carPng from '../../assets/Atlast Assets/Hero Images/AtlasHero3-shadow.png';
 import grayCarPng from '../../assets/Atlast Assets/Hero Images/AtlasHerolight1-640x488.png';
-import VerticalForm from '../Form/BookNow';
+import VerticalForm from '../Form/EmailJs';
 
-const Hero = ({ theme, onBookNowClick }) => {
+const Hero = ({ onBookNowClick }) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const formRef = useRef(null);
 
@@ -29,16 +29,16 @@ const Hero = ({ theme, onBookNowClick }) => {
   };
 
   return (
-    <div className={`hero-container ${theme === 'dark' ? 'dark' : ''}`}>
+    <div className="hero-container bg-slate-700">
       <div className="container min-h-[620px] flex">
         <div className="grid place-items-center grid-cols-2 sm-grid-cols-2">
           <div data-aos="zoom-in" data-aos-duration="1500" className="order-1 sm:order-2">
-            <img src={theme === 'dark' ? carPng : grayCarPng} alt="" className="relative -z-10 max-h-[600px] sm:scale-125 drop-shadow-[2px_20px_rgba(0,0,0,0.50)]" />
+            <img src={grayCarPng} alt="Gray Car" className="flex -z-10 max-h-[600px] sm:scale-125 drop-shadow-[2px_20px_rgba(0,0,0,0.50)]" />
           </div>
           <div className="order-2 sm:order-1 space-y-5 sm:pr-32">
             <p data-aos="fade-up" className="text-primary text-2xl font-semi-bold font-serif">Crafting Perfection, One Detail at a Time.</p>
             <h1 data-aos="fade-up" data-aos-delay="600" className="text-5xl lg:text-7xl font-semi-bold font-serif">Drive with Confidence!</h1>
-            <p data-aos="fade-up" data-aos-delay="1000">"Precision Detailing: Where True Beauty is Revealed. With painstaking attention to every contour, our skilled artisans breathe new life into your vehicle, unveiling a level of pristine elegance that captivates the eye and rejuvenates your driving experience."</p>
+            <p data-aos="fade-up" data-aos-delay="1000" className='text-black font-semibold'>"Precision Detailing: Where True Beauty is Revealed. With painstaking attention to every contour, our skilled artisans breathe new life into your vehicle, unveiling a level of pristine elegance that captivates the eye and rejuvenates your driving experience."</p>
             {/* Conditionally render the form or the button */}
             {isFormVisible ? (
               <div ref={formRef}>

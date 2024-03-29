@@ -4,7 +4,7 @@ import Hero from './components/Hero/Hero';
 import About from './components/About Us/About';
 import Services from './components/Services/Services';
 import WhyChooseUs from './components/WhyChooseUs/WhyChooseUs';
-import VerticalForm from './components/Form/BookNow';
+import VerticalForm from './components/Form/EmailJs';
 
 const App = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -21,13 +21,14 @@ const App = () => {
   return (
     <div className={`theme-${theme}`}>
       <Navbar theme={theme} setTheme={setTheme} />
-      {/* Pass the theme prop to the Hero component */}
+      {/* Pass the theme prop to the Hero component and the onBookNowClick prop */}
       <Hero theme={theme} onBookNowClick={handleBookNowClick} />
       <About />
       <WhyChooseUs />
       <Services />
       
-      <VerticalForm showForm={showForm} onClose={handleCloseForm} /> {/* Pass props to VerticalForm */}
+      {/* Pass props to VerticalForm */}
+      <VerticalForm showForm={showForm} onClose={handleCloseForm} />
     </div>
   );
 };

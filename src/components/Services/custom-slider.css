@@ -1,0 +1,9 @@
+/* Define the color of the slider dots */
+.slider-container .slick-dots li button {
+  color: #ff0000; /* Change the color to your desired color */
+}
+
+/* Define the color of the active dot */
+.slider-container .slick-dots li.slick-active button {
+  color: #00ff00; /* Change the color to your desired color */
+}
