@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import VerticalForm from "../Form/EmailJs";
 import PointProtectionFilmImage from "../../assets/Atlast Assets/Hero Images/PPF2.jpg";
 import GrapheneCeramicCoatingImage from "../../assets/Atlast Assets/Hero Images/graphene.png";
 import PaintCorrectionEnhancementImage from "../../assets/Atlast Assets/Hero Images/paintcorrection.png";
@@ -49,12 +48,6 @@ const skillsData = [
 ];
 
 const Services = () => {
-  const [showForm, setShowForm] = useState(false);
-
-  const handleBookNowClick = () => {
-    setShowForm(true);
-  };
-
   return (
     <>
       <span id="about"></span>
@@ -115,14 +108,11 @@ const Services = () => {
           </Slider>
           <div className="flex justify-center mt-8">
             <button
-              onClick={handleBookNowClick}
-              data-aos-delay="1000"
               className="btn bg-primary text-black px-6 py-2 rounded-md hover:bg-primary/80 duration-300 font-bold"
             >
               Book Now
             </button>
           </div>
-          {showForm && <VerticalForm onClose={() => setShowForm(false)} services={skillsData} />}
         </div>
       </div>
     </>
