@@ -5,6 +5,7 @@ import About from './components/About Us/About';
 import Services from './components/Services/Services';
 import WhyChooseUs from './components/WhyChooseUs/WhyChooseUs';
 import VerticalForm from './components/Form/EmailJs';
+import MessengerIcon from './components/Sticky Icons/MessengerIcon';
 
 const App = () => {
   const [showForm, setShowForm] = useState(false);
@@ -28,6 +29,9 @@ const App = () => {
       
       {/* Pass props to VerticalForm */}
       <VerticalForm showForm={showForm} onClose={handleCloseForm} />
+
+      {/* Include MessengerIcon component */}
+      <MessengerIcon />
     </div>
   );
 };
