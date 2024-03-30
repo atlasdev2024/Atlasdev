@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import logo from '../../assets/Atlast Assets/Hero Images/Logo_1-removebg-preview-small.png'; // Import your logo image
+import { Link } from 'react-router-dom';
+import logo from '../../assets/Atlast Assets/Hero Images/Logo_1-removebg-preview-small.png';
 
 const NavLink = [
     {
         id: "1",
         name: "Home",
-        link: "/", // Update link to "/"
+        link: "/",
     },
     {
         id: "2",
@@ -16,7 +16,7 @@ const NavLink = [
     {
         id: "3",
         name: "About Us",
-        link: "/about", // Update link to "/about"
+        link: "/about",
     },
     {
         id: "4",
@@ -36,19 +36,19 @@ const Navbar = () => {
         <nav className="shadow-md bg-dark duration-300">
             <div className="container mx-auto px-4 md:px-0 py-4">
                 <div className="flex justify-between items-center">
-                    <div className="flex items-center"> {/* Container for logo and company name */}
-                        <img src={logo} alt="Logo" className="h-8 mr-2" /> {/* Adjust the height and margin as needed */}
+                    <div className="flex items-center"> 
+                        <img src={logo} alt="Logo" className="h-8 mr-2" /> 
                         <h1 className="text-xl font-bold text-white">Atlas Premium Auto Shield</h1>
                     </div>
                     <div className="md:hidden">
-                        <button onClick={handleToggleMenu} className="text-2xl cursor-pointer">&#9776;</button>
+                        <button onClick={handleToggleMenu} className="text-2xl cursor-pointer text-white">&#9776;</button>
                     </div>
                     <div className={`md:flex ${showMenu ? 'block' : 'hidden'} md:items-center`}>
                         <ul className="md:flex items-center gap-8">
                             {NavLink.map((data) => (
                                 <li key={data.id} className="py-4">
-                                    <Link // Use Link instead of <a> tag
-                                        to={data.link} // Set the "to" prop to the desired link
+                                    <Link 
+                                        to={data.link} 
                                         className="underline py-2 hover:border-b-2 hover:text-primary hover:border-primary transition-colors duration-300 text-lg font-medium text-white"
                                     >
                                         {data.name}
