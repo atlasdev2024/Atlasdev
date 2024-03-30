@@ -38,7 +38,9 @@ const Footer = () => {
               voluptate.
             </p>
             <div className="flex items-center gap-3 mb-4">
-              <FontAwesomeIcon icon={faWaze} className="text-3xl" />
+              <a href={wazeLink} target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faWaze} className="text-3xl hover:text-primary duration-300" />
+              </a>
               <p>B13 L33 Tanguile St. Meadowood Exec. Vill. , Bacoor, Philippines</p>
             </div>
             <div className="flex items-center gap-3 mb-4">
