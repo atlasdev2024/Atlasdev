@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import logo from '../../assets/Atlast Assets/Hero Images/Logo_1-removebg-preview-small.png'; // Import your logo image
 
 const NavLink = [
     {
@@ -32,11 +33,12 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="shadow-md bg-gray-300 duration-300">
+        <nav className="shadow-md bg-dark duration-300">
             <div className="container mx-auto px-4 md:px-0 py-4">
                 <div className="flex justify-between items-center">
-                    <div>
-                        <h1 className="text-xl font-bold">Atlas Premium Auto Shield</h1>
+                    <div className="flex items-center"> {/* Container for logo and company name */}
+                        <img src={logo} alt="Logo" className="h-8 mr-2" /> {/* Adjust the height and margin as needed */}
+                        <h1 className="text-xl font-bold text-white">Atlas Premium Auto Shield</h1>
                     </div>
                     <div className="md:hidden">
                         <button onClick={handleToggleMenu} className="text-2xl cursor-pointer">&#9776;</button>
@@ -47,7 +49,7 @@ const Navbar = () => {
                                 <li key={data.id} className="py-4">
                                     <Link // Use Link instead of <a> tag
                                         to={data.link} // Set the "to" prop to the desired link
-                                        className="py-2 hover:border-b-2 hover:text-primary hover:border-primary transition-colors duration-300 text-lg font-medium"
+                                        className="underline py-2 hover:border-b-2 hover:text-primary hover:border-primary transition-colors duration-300 text-lg font-medium text-white"
                                     >
                                         {data.name}
                                     </Link>

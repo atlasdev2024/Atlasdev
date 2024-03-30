@@ -47,6 +47,7 @@ const Home = () => (
     <Hero />
     <About />
     <WhyChooseUs />
+    <Services /> 
   </>
 );
 

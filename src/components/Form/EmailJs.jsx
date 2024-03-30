@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 
-const VerticalForm = ({ onClose, theme, services }) => {
+const VerticalForm = ({ onClose, theme, services, isVisible }) => {
   const [formData, setFormData] = useState({
     name: '',
     contactNumber: '',
@@ -30,9 +30,24 @@ const VerticalForm = ({ onClose, theme, services }) => {
 
     // Reset form fields
     setFormData({ name: '', contactNumber: '', carModel: '', selectedPackage: '' });
+    
+    // Call onClose function to close the form
+    onClose();
   };
 
-  // Rest of your component code...
+  return (
+    <div className={`vertical-form ${isVisible ? 'visible' : 'hidden'}`}>
+      <form onSubmit={handleSubmit}>
+        {/* Form fields */}
+        <input type="text" name="name" value={formData.name} onChange={handleChange} />
+        <input type="tel" name="contactNumber" value={formData.contactNumber} onChange={handleChange} />
+        <input type="text" name="carModel" value={formData.carModel} onChange={handleChange} />
+        <input type="text" name="selectedPackage" value={formData.selectedPackage} onChange={handleChange} />
+        {/* Submit button */}
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
 };
 
 export default VerticalForm;
