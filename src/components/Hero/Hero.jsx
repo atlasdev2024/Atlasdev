@@ -30,6 +30,10 @@ const Hero = ({ onBookNowClick }) => {
   const sendEmail = (e) => {
     e.preventDefault();
 
+    // Get the values of "Services" and "Preferred Date"
+    const services = e.target.services.value;
+    const preferredDate = e.target.preferred_date.value;
+
     // Send email using EmailJS
     emailjs.sendForm('service_ztlqjoe', 'template_3vqzxvf', e.target, 'l2MsXRJSdxpIJyh-H')
       .then((result) => {
@@ -71,13 +75,13 @@ const Hero = ({ onBookNowClick }) => {
                     <input type="text" name="preferred_date" className="block w-full border border-gray-300 rounded-md p-2 mb-4" placeholder='MM/DD/YYYY' />
                     <label className="block mb-2">Services</label>
                     <select name="services" className="block w-full border border-gray-300 rounded-md p-2 mb-4">
-                      <option value="service1">Paint Protection Film</option>
-                      <option value="service2">Graphene Ceramic Coating</option>
-                      <option value="service3">Paint Correction/Enhancement</option>
-                      <option value="service3">Interior Detail</option>
+                      <option value="Paint Protection Film">Paint Protection Film</option>
+                      <option value="Graphene Ceramic Coating">Graphene Ceramic Coating</option>
+                      <option value="Paint Correction/Enhancement">Paint Correction/Enhancement</option>
+                      <option value="Interior Detail">Interior Detail</option>
                     </select>
                     <label className="block mb-2">Message</label>
-                    <textarea name="message" className="block w-full border border-gray-300 rounded-md p-2 mb-4" placeholder='Preffered Date of Booking and Chosen Services'></textarea>
+                    <textarea name="message" className="block w-full border border-gray-300 rounded-md p-2 mb-4" placeholder='Preferred Date of Booking and Chosen Services'></textarea>
                     <input type="submit" value="Send" className="btn bg-primary text-black px-6 py-2 rounded-md hover:bg-primary/80 duration-300 font-semibold" />
                   </form>
                 </div>
