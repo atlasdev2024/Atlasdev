@@ -10,8 +10,8 @@ const MessengerIcon = () => {
   };
 
   return (
-    <div className="messenger-icon" style={{ position: "fixed", right: "20px", bottom: "20px", zIndex: "1000" }} onClick={openMessenger}>
-      <FontAwesomeIcon icon={faFacebookMessenger} style={{ width: "60px", height: "60px" }} />
+    <div className="messenger-icon" style={{ position: "fixed", right: "60px", bottom: "60px", zIndex: "1000" }} onClick={openMessenger}>
+      <FontAwesomeIcon icon={faFacebookMessenger} style={{ width: "65px", height: "65px" }} />
     </div>
   );
 };

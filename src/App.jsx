@@ -6,6 +6,7 @@ import Services from './components/Services/Services';
 import WhyChooseUs from './components/WhyChooseUs/WhyChooseUs';
 import VerticalForm from './components/Form/EmailJs';
 import MessengerIcon from './components/Sticky Icons/MessengerIcon';
+import Footer from './components/Footer/Footer'
 
 const App = () => {
   const [showForm, setShowForm] = useState(false);
@@ -32,6 +33,7 @@ const App = () => {
 
       {/* Include MessengerIcon component */}
       <MessengerIcon />
+      <Footer />
     </div>
   );
 };
