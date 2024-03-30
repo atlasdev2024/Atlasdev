@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const NavLink = [
     {
         id: "1",
         name: "Home",
-        link: "/#"
+        link: "/", // Update link to "/"
     },
     {
         id: "2",
         name: "Services",
-        link: "/Services",
+        link: "/services",
     },
     {
         id: "3",
-        name: "About",
-        link: "/#About",
+        name: "About Us",
+        link: "/about", // Update link to "/about"
     },
     {
         id: "4",
-        name: "Booking",
-        link: "/#Booking",
+        name: "WhyChooseUs",
+        link: "/whychoose",
     },
-]
+];
 
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -44,11 +45,12 @@ const Navbar = () => {
                         <ul className="md:flex items-center gap-8">
                             {NavLink.map((data) => (
                                 <li key={data.id} className="py-4">
-                                    <a
+                                    <Link // Use Link instead of <a> tag
+                                        to={data.link} // Set the "to" prop to the desired link
                                         className="py-2 hover:border-b-2 hover:text-primary hover:border-primary transition-colors duration-300 text-lg font-medium"
-                                        href={data.link}>
+                                    >
                                         {data.name}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>

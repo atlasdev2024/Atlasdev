@@ -6,7 +6,7 @@ import VerticalForm from "../Form/EmailJs";
 import PointProtectionFilmImage from "../../assets/Atlast Assets/Hero Images/PPF2.jpg";
 import GrapheneCeramicCoatingImage from "../../assets/Atlast Assets/Hero Images/graphene.png";
 import PaintCorrectionEnhancementImage from "../../assets/Atlast Assets/Hero Images/paintcorrection.png";
-import InteriorDetailImage from "../../assets/Atlast Assets/Hero Images/PPF.jpg";
+import InteriorDetailImage from "../../assets/Atlast Assets/Hero Images/interiordetailing.png";
 import "./custom-slider.css"; // Import the custom CSS file
 
 const skillsData = [
