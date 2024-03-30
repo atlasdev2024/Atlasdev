@@ -32,7 +32,7 @@ const Hero = ({ onBookNowClick }) => {
 
     // Get the values of "Services" and "Preferred Date"
     const services = e.target.services.value;
-    const preferredDate = e.target.preferred_date.value;
+    const preferredDate = e.target.preferredDate.value;
 
     // Send email using EmailJS
     emailjs.sendForm('service_ztlqjoe', 'template_3vqzxvf', e.target, 'l2MsXRJSdxpIJyh-H')
@@ -72,7 +72,7 @@ const Hero = ({ onBookNowClick }) => {
                     <label className="block mb-2">Contact Number</label>
                     <input type="text" name="contact_number" className="block w-full border border-gray-300 rounded-md p-2 mb-4" />
                     <label className="block mb-2">Preferred Date</label>
-                    <input type="text" name="preferred_date" className="block w-full border border-gray-300 rounded-md p-2 mb-4" placeholder='MM/DD/YYYY' />
+                    <input type="text" name="preferredDate" className="block w-full border border-gray-300 rounded-md p-2 mb-4" placeholder='MM/DD/YYYY' />
                     <label className="block mb-2">Services</label>
                     <select name="services" className="block w-full border border-gray-300 rounded-md p-2 mb-4">
                       <option value="Paint Protection Film">Paint Protection Film</option>
