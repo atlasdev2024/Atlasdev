@@ -74,6 +74,10 @@ const Footer = () => {
             ))}
           </div>
         </div>
+        {/* Copyright */}
+        <div className="text-right pr-4 pb-4">
+          <p className="text-xs text-gray-600">© AtlasDev2024</p>
+        </div>
       </section>
     </div>
   );

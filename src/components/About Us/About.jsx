@@ -10,7 +10,8 @@ const About = () => {
             <img
               src={CarPng}
               alt="Car"
-              className="w-full max-w-md mx-auto sm:max-w-none sm:mx-0 sm:scale-105 sm:translate-x-11 max-h-[300px] drop-shadow-[2px_10px_6px_rgba(0,0,0,0.50)]"
+              className="w-full max-w-md mx-auto sm:max-w-none sm:mx-0 sm:scale-105 sm:translate-x-11 max-h-[300px] h-auto drop-shadow-[2px_10px_6px_rgba(0,0,0,0.50)]"
+              style={{ maxWidth: '100%' }}
             />
           </div>
           <div className="space-y-5 sm:p-0 pb-6">
