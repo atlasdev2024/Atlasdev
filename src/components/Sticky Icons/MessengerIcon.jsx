@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
 
 const MessengerIcon = () => {
-  const messengerLink = "https://m.me/153232761215203";
+  const messengerLink = "https://m.me/142557948938113";
 
   const openMessenger = () => {
     window.open(messengerLink, "_blank");
