@@ -26,7 +26,7 @@ const Footer = () => {
   const wazeLink = "https://www.waze.com/en/live-map/directions/atlas-premium-autoshield-tanguile-bacoor?place=w.79298704.792724900.37056866";
   
   return (
-    <div className="bg-gray-100 dark:bg-dark mt-14 rounded-t-3xl">
+    <div className="bg-gray-200 dark:bg-dark mt-14 rounded-t-3xl">
       <section className="container">
         <div className="grid md:grid-cols-3 py-5">
           {/* Company Details */}
