@@ -4,8 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import VerticalForm from "../Form/EmailJs";
 import PointProtectionFilmImage from "../../assets/Atlast Assets/Hero Images/PPF2.jpg";
-import GrapheneCeramicCoatingImage from "../../assets/Atlast Assets/Hero Images/PPF2.jpg";
-import PaintCorrectionEnhancementImage from "../../assets/Atlast Assets/Hero Images/PPF.jpg";
+import GrapheneCeramicCoatingImage from "../../assets/Atlast Assets/Hero Images/graphene.png";
+import PaintCorrectionEnhancementImage from "../../assets/Atlast Assets/Hero Images/paintcorrection.png";
 import InteriorDetailImage from "../../assets/Atlast Assets/Hero Images/PPF.jpg";
 import "./custom-slider.css"; // Import the custom CSS file
 
