@@ -30,7 +30,7 @@ const About = () => {
               met with unparalleled beauty and sophistication."
             </p>
             <button data-aos="fade-up" className="button-outline w-full sm:w-auto">
-              Get Started
+              Know More
             </button>
           </div>
         </div>
