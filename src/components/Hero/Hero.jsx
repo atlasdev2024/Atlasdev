@@ -50,9 +50,10 @@ const Hero = ({ onBookNowClick }) => {
       {/* Render the Calendly inline widget */}
       {isCalendlyVisible && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
-          <div className="calendly-floating-widget" style={{ width: '80%', maxWidth: '600px', height: '80vh', maxHeight: '900px', borderRadius: '10px', overflow: 'hidden' }}>
-            <div className="calendly-inline-widget" data-url="https://calendly.com/atlaspremiumautoshield/30min?hide_event_type_details=1"></div>
+          <div className="calendly-floating-widget" style={{ minWidth: '320px', height: '700px' }}>
+            <div className="calendly-inline-widget" data-url="https://calendly.com/atlaspremiumautoshield/30min" style={{ minWidth: '320px', height: '700px' }}></div>
           </div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         </div>
       )}
     </div>
