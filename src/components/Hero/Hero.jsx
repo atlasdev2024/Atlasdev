@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import grayCarPng from '../../assets/Atlast Assets/Hero Images/AtlasHerolight1-640x488.png';
 
 const Hero = ({ onBookNowClick }) => {
   const [isCalendlyVisible, setIsCalendlyVisible] = useState(false);
+  const [isBookingSent, setIsBookingSent] = useState(false);
+  const calendlyRef = useRef(null);
 
   useEffect(() => {
     if (isCalendlyVisible) {
@@ -12,18 +14,38 @@ const Hero = ({ onBookNowClick }) => {
       script.src = 'https://assets.calendly.com/assets/external/widget.js';
       script.async = true;
       document.body.appendChild(script);
+
+      // Add event listener to close widget when clicked outside
+      const handleClickOutside = (event) => {
+        if (calendlyRef.current && !calendlyRef.current.contains(event.target)) {
+          setIsCalendlyVisible(false);
+          setIsBookingSent(false);
+        }
+      };
+
+      document.addEventListener('mousedown', handleClickOutside);
+
       return () => {
-        // Clean up script when component unmounts
+        // Clean up script and event listener when component unmounts
         document.body.removeChild(script);
+        document.removeEventListener('mousedown', handleClickOutside);
       };
     }
   }, [isCalendlyVisible]);
 
+  const handleBookingSent = () => {
+    setIsCalendlyVisible(false);
+    setIsBookingSent(true);
+  };
+
   const openCalendlyWidget = () => {
-    setIsCalendlyVisible(true);
-    // Call the onBookNowClick function passed from the parent component
-    if (typeof onBookNowClick === 'function') {
-      onBookNowClick();
+    if (!isCalendlyVisible) {
+      setIsCalendlyVisible(true);
+      setIsBookingSent(false);
+      // Call the onBookNowClick function passed from the parent component
+      if (typeof onBookNowClick === 'function') {
+        onBookNowClick();
+      }
     }
   };
 
@@ -40,8 +62,11 @@ const Hero = ({ onBookNowClick }) => {
               <h1 data-aos="fade-up" data-aos-delay="300" className="text-3xl lg:text-5xl font-semibold font-serif">Drive with Confidence!</h1>
               <p data-aos="fade-up" data-aos-delay="600" className="text-lg lg:text-xl font-normal leading-relaxed">"Precision Detailing: Where True Beauty is Revealed. With painstaking attention to every contour, our skilled artisans breathe new life into your vehicle, unveiling a level of pristine elegance that captivates the eye and rejuvenates your driving experience."</p>
               {/* Render the "Book Now" button */}
-              {!isCalendlyVisible && (
+              {!isCalendlyVisible && !isBookingSent && (
                 <button onClick={openCalendlyWidget} className="btn bg-primary text-black px-6 py-2 rounded-md hover:bg-primary/80 duration-300 font-semibold">Book Now</button>
+              )}
+              {isBookingSent && (
+                <p className="text-lg text-green-500">Booking Sent!</p>
               )}
             </div>
           </div>
@@ -50,8 +75,9 @@ const Hero = ({ onBookNowClick }) => {
       {/* Render the Calendly inline widget */}
       {isCalendlyVisible && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
-          <div className="calendly-floating-widget" style={{ minWidth: '320px', height: '700px' }}>
+          <div ref={calendlyRef} className="calendly-floating-widget">
             <div className="calendly-inline-widget" data-url="https://calendly.com/atlaspremiumautoshield/30min" style={{ minWidth: '320px', height: '700px' }}></div>
+            <button className="absolute top-2 right-2 text-white" onClick={() => setIsCalendlyVisible(false)}>Close</button>
           </div>
           <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         </div>
