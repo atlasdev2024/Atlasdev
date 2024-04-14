@@ -2,6 +2,9 @@ import React from "react";
 import { FaFacebook, FaInstagram, FaMobileAlt } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWaze } from "@fortawesome/free-brands-svg-icons";
+import sponsorLogo from "../../assets/Atlast Assets/SponsorLogo/Zivent.jpg"; // Import sponsor logo image
+import sponsorLogo2 from "../../assets/Atlast Assets/SponsorLogo/Rupes.jpg";
+import sponsorLogo3 from "../../assets/Atlast Assets/SponsorLogo/XPPF.jpg";
 
 const FooterLinks = [
   {
@@ -37,24 +40,13 @@ const Footer = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
               voluptate.
             </p>
-            <div className="flex items-center gap-3 mb-4">
-              <a href={wazeLink} target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faWaze} className="text-3xl hover:text-primary duration-300" />
-              </a>
-              <p>B13 L33 Tanguile St. Meadowood Exec. Vill. , Bacoor, Philippines</p>
-            </div>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-2">
               <FaMobileAlt />
               <p>0917 182 5453</p>
             </div>
-            {/* Social Handles */}
-            <div className="flex items-center gap-3">
-              <a href="https://www.instagram.com/atlas_premiumautoshield/">
-                <FaInstagram className="text-3xl hover:text-primary duration-300" />
-              </a>
-              <a href="https://www.facebook.com/profile.php?id=61552184784190&mibextid=LQQJ4d">
-                <FaFacebook className="text-3xl hover:text-primary duration-300" />
-              </a>
+            <div className="flex items-center gap-3 mb-4">
+              <FontAwesomeIcon icon={faWaze} className="text-3xl hover:text-primary duration-300" />
+              <p>B13 L33 Tanguile St. Meadowood Exec. Vill. , Bacoor, Philippines</p>
             </div>
           </div>
           {/* Links */}
@@ -75,6 +67,12 @@ const Footer = () => {
               </div>
             ))}
           </div>
+        </div>
+        {/* Sponsor Logos */}
+        <div className="flex justify-center mt-8">
+          <img src={sponsorLogo} alt="Sponsor Logo" className="h-12 mx-4 mb-4 md:mb-0" />
+          <img src={sponsorLogo2} alt="Sponsor Logo" className="h-12 mx-4 mb-4 md:mb-0" />
+          <img src={sponsorLogo3} alt="Sponsor Logo" className="h-12 mx-4 mb-4 md:mb-0" />
         </div>
         {/* Copyright */}
         <div className="text-right pr-4 pb-4">
