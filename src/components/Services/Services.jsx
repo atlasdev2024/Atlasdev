@@ -170,7 +170,7 @@ const Services = ({ onBookNowClick }) => {
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
           <div ref={calendlyRef} className="calendly-floating-widget">
             <div className="calendly-inline-widget relative" data-url="https://calendly.com/atlaspremiumautoshield/30min" style={{ minWidth: '320px', height: '700px' }}>
-              <button className="absolute top-2 right-2 text-white bg-red-500 px-2 py-1 rounded-md" onClick={() => setIsCalendlyVisible(false)}>Close</button>
+              <button className="absolute top-2 right-2 text-white bg-red-500 px-2 py-1 rounded-md" onClick={() => setIsCalendlyVisible(false)}>X</button>
             </div>
           </div>
           <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
