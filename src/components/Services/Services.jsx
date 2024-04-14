@@ -1,91 +1,101 @@
 import React, { useState, useEffect, useRef } from 'react';
-import emailjs from 'emailjs-com';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import PointProtectionFilmImage from "../../assets/Atlast Assets/Hero Images/PPF2.jpg";
-import GrapheneCeramicCoatingImage from "../../assets/Atlast Assets/Hero Images/graphene.png";
-import PaintCorrectionEnhancementImage from "../../assets/Atlast Assets/Hero Images/paintcorrection.png";
-import InteriorDetailImage from "../../assets/Atlast Assets/Hero Images/interiordetailing.png";
-import "./custom-slider.css";
-
-const skillsData = [
-  {
-    id: 1,
-    name: "Paint Protection Film",
-    image: PointProtectionFilmImage,
-    link: "#",
-    description: "",
-    aosDelay: "300",
-    interval: 2000,
-  },
-  {
-    id: 2,
-    name: "Graphene Ceramic Coating",
-    image: GrapheneCeramicCoatingImage,
-    link: "#",
-    description: "",
-    aosDelay: "500",
-    interval: 3000,
-  },
-  {
-    id: 3,
-    name: "Paint Correction/Enhancement",
-    image: PaintCorrectionEnhancementImage,
-    link: "#",
-    description: "",
-    aosDelay: "1000",
-    interval: 4000,
-  },
-  {
-    id: 4,
-    name: "Interior Detail",
-    image: InteriorDetailImage,
-    link: "#",
-    description: "",
-    aosDelay: "1500",
-    interval: 5000,
-  },
-];
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import PointProtectionFilmImage from '../../assets/Atlast Assets/Hero Images/PPF2.jpg';
+import GrapheneCeramicCoatingImage from '../../assets/Atlast Assets/Hero Images/graphene.png';
+import PaintCorrectionEnhancementImage from '../../assets/Atlast Assets/Hero Images/paintcorrection.png';
+import InteriorDetailImage from '../../assets/Atlast Assets/Hero Images/interiordetailing.png';
+import './custom-slider.css';
 
 const Services = () => {
-  const [isFormVisible, setIsFormVisible] = useState(false);
-  const formRef = useRef(null);
+  const [isCalendlyVisible, setIsCalendlyVisible] = useState(false);
+  const [isBookingSent, setIsBookingSent] = useState(false);
+  const calendlyRef = useRef(null);
 
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (formRef.current && !formRef.current.contains(event.target)) {
-        setIsFormVisible(false);
+    if (isCalendlyVisible) {
+      // Initialize Calendly script when the component mounts or when isCalendlyVisible changes
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      document.body.appendChild(script);
+
+      // Add event listener to close widget when clicked outside
+      const handleClickOutside = (event) => {
+        if (calendlyRef.current && !calendlyRef.current.contains(event.target)) {
+          setIsCalendlyVisible(false);
+          setIsBookingSent(false);
+        }
+      };
+
+      document.addEventListener('mousedown', handleClickOutside);
+
+      return () => {
+        // Clean up script and event listener when component unmounts
+        document.body.removeChild(script);
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
+  }, [isCalendlyVisible]);
+
+  const handleBookingSent = () => {
+    setIsCalendlyVisible(false);
+    setIsBookingSent(true);
+  };
+
+  const openCalendlyWidget = () => {
+    if (!isCalendlyVisible) {
+      setIsCalendlyVisible(true);
+      setIsBookingSent(false);
+      // Call the onBookNowClick function passed from the parent component
+      if (typeof onBookNowClick === 'function') {
+        onBookNowClick();
       }
     }
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [formRef]);
-
-  const handleOpenForm = () => {
-    setIsFormVisible(true);
   };
 
-  const sendEmail = (e) => {
-    e.preventDefault();
 
-    // Send email using EmailJS
-    emailjs.sendForm('service_ztlqjoe', 'template_3vqzxvf', e.target, 'l2MsXRJSdxpIJyh-H')
-      .then((result) => {
-        console.log('Appointment Sent:', result.text);
-        // Optionally, you can show a success message or perform other actions here
-      })
-      .catch((error) => {
-        console.error('Appointment failed:', error);
-        // Optionally, you can show an error message or perform other actions here
-      });
-
-    // Reset form fields
-    e.target.reset();
-  };
+  // Define skillsData
+  const skillsData = [
+    {
+      id: 1,
+      name: 'Paint Protection Film',
+      image: PointProtectionFilmImage,
+      link: '#',
+      description: '',
+      aosDelay: '300',
+      interval: 2000,
+    },
+    {
+      id: 2,
+      name: 'Graphene Ceramic Coating',
+      image: GrapheneCeramicCoatingImage,
+      link: '#',
+      description: '',
+      aosDelay: '500',
+      interval: 3000,
+    },
+    {
+      id: 3,
+      name: 'Paint Correction/Enhancement',
+      image: PaintCorrectionEnhancementImage,
+      link: '#',
+      description: '',
+      aosDelay: '1000',
+      interval: 4000,
+    },
+    {
+      id: 4,
+      name: 'Interior Detail',
+      image: InteriorDetailImage,
+      link: '#',
+      description: '',
+      aosDelay: '1500',
+      interval: 5000,
+    },
+  ];
 
   return (
     <>
@@ -132,7 +142,7 @@ const Services = () => {
                 data-aos="fade-up"
                 data-aos-delay={skill.aosDelay}
                 className="p-4  rounded-lg"
-                style={{ overflow: "hidden" }}
+                style={{ overflow: 'hidden' }}
               >
                 <div
                   className="h-[200px] bg-cover bg-center"
@@ -146,70 +156,25 @@ const Services = () => {
             ))}
           </Slider>
           <div className="flex justify-center mt-8">
-            <button
-              onClick={handleOpenForm}
-              className="btn bg-primary text-black px-6 py-2 rounded-md hover:bg-primary/80 duration-300 font-bold"
-            >
-              Book Now
-            </button>
-          </div>
-          {isFormVisible && (
-            <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
-              <div className="bg-gray-200 p-6 rounded-lg shadow-md w-full max-w-md pr-10" ref={formRef}>
-                <form onSubmit={sendEmail}>
-                  <label className="block mb-2">Name</label>
-                  <input
-                    type="text"
-                    name="user_name"
-                    className="block w-full border border-gray-300 rounded-md p-2 mb-4"
-                    placeholder="Full Name"
-                  />
-                  <label className="block mb-2">Email</label>
-                  <input
-                    type="email"
-                    name="user_email"
-                    className="block w-full border border-gray-300 rounded-md p-2 mb-4"
-                  />
-                  <label className="block mb-2">Contact Number</label>
-                  <input
-                    type="text"
-                    name="contact_number"
-                    className="block w-full border border-gray-300 rounded-md p-2 mb-4"
-                  />
-                  <label className="block mb-2">Preferred Date</label>
-                  <input
-                    type="text"
-                    name="preferred_date"
-                    className="block w-full border border-gray-300 rounded-md p-2 mb-4"
-                    placeholder="MM/DD/YYYY"
-                  />
-                  <label className="block mb-2">Services</label>
-                  <select
-                    name="services"
-                    className="block w-full border border-gray-300 rounded-md p-2 mb-4"
-                  >
-                    <option value="service1">Paint Protection Film</option>
-                    <option value="service2">Graphene Ceramic Coating</option>
-                    <option value="service3">Paint Correction/Enhancement</option>
-                    <option value="service4">Interior Detail</option>
-                  </select>
-                  <label className="block mb-2">Message</label>
-                  <textarea
-                    name="message"
-                    className="block w-full border border-gray-300 rounded-md p-2 mb-4"
-                    placeholder="Preferred Date of Booking and Chosen Services"
-                  ></textarea>
-                  <input
-                    type="submit"
-                    value="Send"
-                    className="btn bg-primary text-black px-6 py-2 rounded-md hover:bg-primary/80 duration-300 font-semibold"
-                  />
-                </form>
-              </div>
-            </div>
+          {!isCalendlyVisible && !isBookingSent && (
+            <button onClick={openCalendlyWidget} className="btn bg-primary text-black px-6 py-2 rounded-md hover:bg-primary/80 duration-300 font-semibold">Book Now</button>
           )}
+          {isBookingSent && (
+                <p className="text-lg text-green-500">Booking Sent!</p>
+              )}
+          </div>
         </div>
       </div>
+      {/* Render the Calendly inline widget */}
+      {isCalendlyVisible && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
+          <div ref={calendlyRef} className="calendly-floating-widget">
+            <div className="calendly-inline-widget" data-url="https://calendly.com/atlaspremiumautoshield/30min" style={{ minWidth: '320px', height: '700px' }}></div>
+            <button className="absolute top-2 right-2 text-white" onClick={() => setIsCalendlyVisible(false)}>Close</button>
+          </div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+      )}
     </>
   );
 };
