@@ -62,7 +62,7 @@ const Footer = () => {
                 </ul>
                 {/* Add Waze link */}
                 {link.title === "Location" && (
-                  <a href={wazeLink} target="_blank" rel="noopener noreferrer">Navigate with Waze</a>
+                  <a href={wazeLink} target="_blank" rel="noopener noreferrer"></a>
                 )}
               </div>
             ))}

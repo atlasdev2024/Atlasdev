@@ -50,7 +50,7 @@ const Hero = ({ onBookNowClick }) => {
   };
 
   return (
-    <div className="hero-container bg-slate-300 relative">
+    <div className="hero-container bg-neutral-800 relative">
       <div className="container mx-auto px-4 py-8 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           <div data-aos="zoom-in" data-aos-duration="1500">
@@ -60,7 +60,7 @@ const Hero = ({ onBookNowClick }) => {
             <div className="space-y-5">
               <p data-aos="fade-up" className="text-primary text-xl lg:text-xl font-semibold underline decoration-solid">Crafting Perfection, One Detail at a Time.</p>
               <h1 data-aos="fade-up" data-aos-delay="300" className="text-3xl lg:text-5xl font-semibold font-serif">Drive with Confidence!</h1>
-              <p data-aos="fade-up" data-aos-delay="600" className="text-lg lg:text-xl font-normal leading-relaxed">"Precision Detailing: Where True Beauty is Revealed. With painstaking attention to every contour, our skilled artisans breathe new life into your vehicle, unveiling a level of pristine elegance that captivates the eye and rejuvenates your driving experience."</p>
+              <p data-aos="fade-up" data-aos-delay="600" className="text-white text-lg lg:text-xl font-normal leading-relaxed">"Precision Detailing: Where True Beauty is Revealed. With painstaking attention to every contour, our skilled artisans breathe new life into your vehicle, unveiling a level of pristine elegance that captivates the eye and rejuvenates your driving experience."</p>
               {/* Render the "Book Now" button */}
               {!isCalendlyVisible && !isBookingSent && (
                 <button onClick={openCalendlyWidget} className="btn bg-primary text-black px-6 py-2 rounded-md hover:bg-primary/80 duration-300 font-semibold">Book Now</button>

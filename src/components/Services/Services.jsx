@@ -101,11 +101,11 @@ const Services = () => {
     <>
       <span id="about"></span>
       <div className="py-14 sm:min-h-[600px] sm:grid sm:place-items-center">
-        <div className="container">
+        <div className="container bg-neutral-400 mr-auto mb-auto">
           <div className="pb-12">
             <h1
               data-aos="fade-up"
-              className="text-3xl font-semibold text-center sm:text-4xl font-serif"
+              className="text-3xl font-semibold text-center sm:text-4xl font-serif mt-2"
             >
               Services Offered
             </h1>
@@ -157,7 +157,7 @@ const Services = () => {
           </Slider>
           <div className="flex justify-center mt-8">
           {!isCalendlyVisible && !isBookingSent && (
-            <button onClick={openCalendlyWidget} className="btn bg-primary text-black px-6 py-2 rounded-md hover:bg-primary/80 duration-300 font-semibold">Book Now</button>
+            <button onClick={openCalendlyWidget} className="btn mb-3 bg-primary text-black px-6 py-2 rounded-md hover:bg-primary/80 duration-300 font-semibold">Book Now</button>
           )}
           {isBookingSent && (
                 <p className="text-lg text-green-500">Booking Sent!</p>
