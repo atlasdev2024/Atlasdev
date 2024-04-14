@@ -8,7 +8,7 @@ import PaintCorrectionEnhancementImage from '../../assets/Atlast Assets/Hero Ima
 import InteriorDetailImage from '../../assets/Atlast Assets/Hero Images/interiordetailing.png';
 import './custom-slider.css';
 
-const Services = () => {
+const Services = ({ onBookNowClick }) => {
   const [isCalendlyVisible, setIsCalendlyVisible] = useState(false);
   const [isBookingSent, setIsBookingSent] = useState(false);
   const calendlyRef = useRef(null);
@@ -156,12 +156,12 @@ const Services = () => {
             ))}
           </Slider>
           <div className="flex justify-center mt-8">
-          {!isCalendlyVisible && !isBookingSent && (
-            <button onClick={openCalendlyWidget} className="btn mb-3 bg-primary text-black px-6 py-2 rounded-md hover:bg-primary/80 duration-300 font-semibold">Book Now</button>
-          )}
-          {isBookingSent && (
-                <p className="text-lg text-green-500">Booking Sent!</p>
-              )}
+            {!isCalendlyVisible && !isBookingSent && (
+              <button onClick={openCalendlyWidget} className="btn mb-3 bg-primary text-black px-6 py-2 rounded-md hover:bg-primary/80 duration-300 font-semibold">Book Now</button>
+            )}
+            {isBookingSent && (
+              <p className="text-lg text-green-500">Booking Sent!</p>
+            )}
           </div>
         </div>
       </div>
@@ -169,8 +169,9 @@ const Services = () => {
       {isCalendlyVisible && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
           <div ref={calendlyRef} className="calendly-floating-widget">
-            <div className="calendly-inline-widget" data-url="https://calendly.com/atlaspremiumautoshield/30min" style={{ minWidth: '320px', height: '700px' }}></div>
-            <button className="absolute top-2 right-2 text-white" onClick={() => setIsCalendlyVisible(false)}>Close</button>
+            <div className="calendly-inline-widget relative" data-url="https://calendly.com/atlaspremiumautoshield/30min" style={{ minWidth: '320px', height: '700px' }}>
+              <button className="absolute top-2 right-2 text-white bg-red-500 px-2 py-1 rounded-md" onClick={() => setIsCalendlyVisible(false)}>Close</button>
+            </div>
           </div>
           <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         </div>
